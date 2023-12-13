@@ -14,13 +14,12 @@ const getCompChoice = () => {
 };
 
 const drowGame = () => {
-  console.log("game was drow!");
   msg.innerText = "Game was drow. Play again.";
   msg.style.backgroundColor= "#081b31"
 };
 
 const showWinner = (userWin, userChoice, compChoice) => {
-  if (userWin === true) {
+  if (userWin) {
     msg.innerText = `You Win your ${userChoice} beats ${compChoice}`;
     userScore++;
     userScorePara.innerText = userScore;
@@ -47,13 +46,13 @@ const playGame = (userChoice) => {
     let userWin = true;
     if (userChoice === "stone") {
       // compChoice = scissers, paper;
-      userWin = compChoice === "scissers" ? false : true;
+      userWin = compChoice === "paper" ? false : true;
     } else if (userChoice === "paper") {
       // compChoice = stone, scissers;
-      userWin = compChoice === "stone" ? false : true;
+      userWin = compChoice === "scissers" ? false : true;
     } else {
       // compChoice = stone, paper;
-      userWin = compChoice === "paper" ? false : true;
+      userWin = compChoice === "stone" ? false : true;
     }
     showWinner(userWin, userChoice, compChoice);
   }
@@ -67,3 +66,4 @@ choices.forEach((choice) => {
     playGame(userChoice);
   });
 });
+
